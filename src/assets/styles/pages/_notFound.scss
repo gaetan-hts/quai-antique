@@ -1,0 +1,46 @@
+.not-found-page {
+    background: url(../../img/bg-slider-01.jpg) center/cover;
+    height: 100vh;
+    width: auto;
+
+    .not-found-container {
+      position: absolute;
+      right: 15%;
+      top: 40%;
+      text-align: end;
+
+      @media screen and (max-width: 900px) {
+        right: 5%;
+      }
+
+      h2 {
+        color: $white;
+        font-family: $font2;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 2rem;
+      }
+      
+      .back-home {
+        height: auto;
+        min-height: 35px;
+        width: 100%;
+        margin: 30px 5px;
+        color: $white;
+        font-family: $font2;
+        font-weight: 800;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        border: 2px solid $white;
+        background: rgba(255, 255, 255, 0);
+        cursor: pointer;
+        transition: all .7s ease-in-out;
+        
+        &:hover {
+          color: $black;
+          background: $white;
+        }
+      }
+    }
+  }
