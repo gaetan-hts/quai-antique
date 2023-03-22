@@ -77,8 +77,6 @@ const handleSubmit = (e) => {
     time: dateObject.toLocaleTimeString().slice(0, 5)
   };
 
-  console.log(data)
-
   const validTimeRanges = [
     {start: '12:00', end: '14:00'},
     {start: '19:00', end: '21:00'}
