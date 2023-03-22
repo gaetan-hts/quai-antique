@@ -13,12 +13,12 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/galerie" element={<Gallery />} />
-          <Route path="/reserver" element={<Book />} />
-          <Route path="/se-connecter" element={<LogIn/>} />
-          <Route path="/profil" element={<User/>} />
+          <Route path="" element={<Home />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="galerie" element={<Gallery />} />
+          <Route path="reserver" element={<Book />} />
+          <Route path="se-connecter" element={<LogIn/>} />
+          <Route path="profil" element={<User/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
     </BrowserRouter>
