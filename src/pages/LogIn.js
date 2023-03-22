@@ -58,7 +58,7 @@ const LogIn = () => {
                 Cookies.set('userData', JSON.stringify(res.data), { expires: null });
               }
 
-              window.location.href = 'https://gaetan-hts.github.io/quai_antique/profil' // history.push('/profil') ?
+              window.location.href = 'https://gaetan-hts.github.io/quai-antique/profil' // history.push('/profil') ?
             }
           })
           .catch(error => {
@@ -86,7 +86,7 @@ const LogIn = () => {
         Cookies.set('userData', JSON.stringify(res.data), { expires: null });
       }
       
-     window.location.href = 'https://gaetan-hts.github.io/quai_antique/profil' // history.push('/profil') ?
+     window.location.href = 'https://gaetan-hts.github.io/quai-antique/profil' // history.push('/profil') ?
     }})
   .catch(error => {
     console.log(error);
