@@ -102,6 +102,7 @@ const handleSubmit = (e) => {
       alert("Veuillez sélectionner une heure de réservation valide. Les heures de réservation disponibles sont entre 12:00 et 14:00 et entre 19:00 et 21:00.");
     } else {
       axios.post('https://api-rest-quai-antique.herokuapp.com/checkBooking.php', data)
+        .then((res) => console.log(res))
         .catch(err => console.error(err));
 
       axios.post('https://api-rest-quai-antique.herokuapp.com/bookingList.php', data)
