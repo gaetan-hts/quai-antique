@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./assets/styles/index.scss"
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
@@ -11,7 +11,7 @@ import User from "./pages/User";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/profil" element={<User/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
