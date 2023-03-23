@@ -31,13 +31,13 @@ const User = () => {
         })
     } else {
       // If no user data cookie found, redirect to login page
-      window.location.href = 'https://gaetan-hts.github.io/quai-antique/*'}
+      window.location.href = 'https://gaetan-hts.github.io/quai-antique/#/se-connecter'}
   },[reload])
 
   // Function to handle logout button click
   const handleClick = () => {
     Cookies.remove("userData");
-    window.location.href = 'https://gaetan-hts.github.io/quai-antique/se-connecter'
+    window.location.href = 'https://gaetan-hts.github.io/quai-antique/#/se-connecter'
   };
 
   // Function to handle editing of allergies data
