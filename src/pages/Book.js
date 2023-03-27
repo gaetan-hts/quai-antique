@@ -9,6 +9,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const Book = () => {
+  const [hover, setHover] = useState(false);
   const [userCookieData, setUserCookieData] = useState(null); // User cookie data
   const [excludedDates, setExcludedDates] = useState([1, 3]); // Array of dates to exclude from calendar
   const [newMaxPeople, setNewMaxPeople] = useState(''); // New maximum number of diners
@@ -137,6 +138,10 @@ const handleSubmit = (e) => {
     })
       .catch(error => {console.error(error)});
   }
+
+  const handleHover = () => {
+    setHover(!hover);
+  };
   
   return (
     <div className='booking-page'>
@@ -145,7 +150,8 @@ const handleSubmit = (e) => {
     <div className='admin-panel'>
       <form>
         <label htmlFor="max-people">Nombre maximum de couverts : </label>
-        <input type="number" placeholder='Nouveau nombre max de couverts' value={newMaxPeople} onChange={e => setNewMaxPeople(e.target.value)} />
+        <div><input type="number" placeholder='Nouveau nombre max de couverts' value={newMaxPeople} onChange={e => setNewMaxPeople(e.target.value)} /><i className={`fa-regular fa-circle-info ${hover ? "active" : ""}`} onMouseEnter={handleHover}
+      onMouseLeave={handleHover}>sedgsdfgsdgsdgsdg</i></div>
         <button onClick={handleMaxPeopleSubmit}>Modifier</button>
       </form>
     </div>
