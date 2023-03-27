@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/quai-antique/static/css/main.b9928a07.css",
+    "main.js": "/quai-antique/static/js/main.89c73e79.js",
+    "static/media/Allura-Regular.ttf": "/quai-antique/static/media/Allura-Regular.b4abf6da4e58441442ee.ttf",
+    "static/media/bg-slider-01.jpg": "/quai-antique/static/media/bg-slider-01.fe69c12f74029e51f817.jpg",
+    "static/media/Roboto-Light.ttf": "/quai-antique/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
+    "static/media/bg-slider-06.jpg": "/quai-antique/static/media/bg-slider-06.294c47f19c50d31b2ced.jpg",
+    "static/media/Poppins-Medium.ttf": "/quai-antique/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
+    "static/media/bg-menu-01.jpg": "/quai-antique/static/media/bg-menu-01.7208e222062ef72d4366.jpg",
+    "static/media/store-01.jpg": "/quai-antique/static/media/store-01.fe88882854ed3e1ad43d.jpg",
+    "static/media/bg-slider-05.jpg": "/quai-antique/static/media/bg-slider-05.a7a1a9c278d55cbd96e7.jpg",
+    "static/media/chef-avatar3.jpg": "/quai-antique/static/media/chef-avatar3.e80f94713c7eb562b702.jpg",
+    "static/media/avatar-sommelier.jpg": "/quai-antique/static/media/avatar-sommelier.709d9dcc6816292ca822.jpg",
+    "static/media/event-01.jpg": "/quai-antique/static/media/event-01.3f17095263a5a9fc6970.jpg",
+    "index.html": "/quai-antique/index.html",
+    "main.b9928a07.css.map": "/quai-antique/static/css/main.b9928a07.css.map",
+    "main.89c73e79.js.map": "/quai-antique/static/js/main.89c73e79.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9928a07.css",
+    "static/js/main.89c73e79.js"
+  ]
+}
