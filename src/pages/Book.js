@@ -7,9 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { fr } from "date-fns/locale";
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import Tooltip from '../components/Tooltip';
 
-const Book = () => {
-  const [hover, setHover] = useState(false);
+const Book = ({ content, children }) => {
   const [userCookieData, setUserCookieData] = useState(null); // User cookie data
   const [excludedDates, setExcludedDates] = useState([1, 3]); // Array of dates to exclude from calendar
   const [newMaxPeople, setNewMaxPeople] = useState(''); // New maximum number of diners
@@ -138,10 +138,6 @@ const handleSubmit = (e) => {
     })
       .catch(error => {console.error(error)});
   }
-
-  const handleHover = () => {
-    setHover(!hover);
-  };
   
   return (
     <div className='booking-page'>
@@ -150,8 +146,12 @@ const handleSubmit = (e) => {
     <div className='admin-panel'>
       <form>
         <label htmlFor="max-people">Nombre maximum de couverts : </label>
-        <div><input type="number" placeholder='Nouveau nombre max de couverts' value={newMaxPeople} onChange={e => setNewMaxPeople(e.target.value)} /><i className={`fa-regular fa-circle-info ${hover ? "active" : ""}`} onMouseEnter={handleHover}
-      onMouseLeave={handleHover}>sedgsdfgsdgsdgsdg</i></div>
+        <div className='tooltip-container'>
+        <input type="number" placeholder='Nouveau nombre max de couverts' value={newMaxPeople} onChange={e => setNewMaxPeople(e.target.value)} />
+          <Tooltip content="Le nombre maximal de couverts correspond au seuil à partir duquel toute nouvelle réservation est empêchée et la date dans l'input date/time est désactivée. Par exemple, si une réservation de 8 personnes est effectuée alors qu'il y a déjà 45 personnes sur les 50 couverts max, la réservation sera tout de même prise en compte.">
+            <span><i className="fa fa-info-circle"></i></span>
+          </Tooltip>
+        </div>
         <button onClick={handleMaxPeopleSubmit}>Modifier</button>
       </form>
     </div>
@@ -203,6 +203,9 @@ const handleSubmit = (e) => {
           </form>
           <button className='submit-btn' onClick={handleSubmit}>RESERVER UNE TABLE</button>
         </div>
+          <Tooltip content="Pour toute réservation surpérieur à 10 couverts, merci de nous contacter par télpéhone">
+            <span><i className="fa fa-info-circle"></i></span>
+          </Tooltip>
       </div>
     </div>
     <div className='bg-img'></div>
