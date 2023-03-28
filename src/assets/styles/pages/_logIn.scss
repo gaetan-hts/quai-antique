@@ -1,6 +1,10 @@
 .login-page {
   padding-top: 300px;
 
+  @media screen and (max-width: 780px) {
+    padding-top: 180px;
+  }
+
   .bg-img {
     background: url(../../img/bg-slider-05.jpg) center/cover;
     width: 100%;

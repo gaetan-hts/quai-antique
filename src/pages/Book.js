@@ -203,7 +203,7 @@ const handleSubmit = (e) => {
           </form>
           <button className='submit-btn' onClick={handleSubmit}>RESERVER UNE TABLE</button>
         </div>
-          <Tooltip content="Pour toute réservation surpérieur à 10 couverts, merci de nous contacter par télpéhone">
+          <Tooltip content="Pour toute réservation supérieure à 10 couverts, merci de nous contacter par téléphone.">
             <span><i className="fa fa-info-circle"></i></span>
           </Tooltip>
       </div>
