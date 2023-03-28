@@ -1,0 +1,118 @@
+Création des tables et insertion des données pour les tables schedules et dishes.
+
+CREATE TABLE bookingList (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  surname VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  people INT NOT NULL,
+  allergies VARCHAR(255),
+  date DATE NOT NULL,
+  time VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE calendar (
+  date VARCHAR(101) PRIMARY KEY NOT NULL,
+  lunchPeople INT NOT NULL,
+  dinnerPeople INT NOT NULL,
+  maxPeople INT NOT NULL
+);
+
+CREATE TABLE dishes (
+  name VARCHAR(255) PRIMARY KEY NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  price INT NOT NULL,
+  category VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE pictures (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  url VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE schedules (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  lunchTime VARCHAR(255) NOT NULL,
+  dinnerTime VARCHAR(255) NOT NULL,
+  day VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE users (
+  admin TINYINT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  surname VARCHAR(255) NOT NULL,
+  email VARCHAR(255) PRIMARY KEY NOT NULL,
+  password CHAR(60) NOT NULL,
+  allergies VARCHAR(255),
+  people INT NOT NULL
+);
+
+CREATE TABLE maxpeople (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  maxnumber INT NOT NULL
+);
+
+
+INSERT INTO
+    schedules (id, day, lunchTime, dinnerTime)
+VALUES (
+        1,
+        'lundi',
+        '12:00 - 14:00',
+        '19:00 - 22:00'
+    ), (
+        2,
+        'mardi',
+        '12:00 - 14:00',
+        '19:00 - 22:00'
+    ), (3, 'mercredi', 'fermé', 'fermé'), (
+        4,
+        'jeudi',
+        '12:00 - 14:00',
+        '19:00 - 22:00'
+    ), (
+        5,
+        'vendredi',
+        '12:00 - 14:00',
+        '19:00 - 22:00'
+    ), (
+        6,
+        'samedi',
+        'fermé',
+        '19:00 - 22:00'
+    ), (
+        7,
+        'dimanche',
+        '12:00 - 14:00',
+        'fermé'
+    );
+
+
+INSERT INTO dishes (name, description, price, category)
+VALUES
+("Terrine de foie gras et confiture de figues", "Terrine de foie gras mi-cuit, accompagnée d'une confiture de figues pour apporter une touche sucrée et un peu de cognac pour relever le tout.", 15.00, "entrée"),
+("Escargots à la bourguignonne", "Escargots cuits avec des échalotes, du vin blanc, du beurre, du persil et du pain rôti.", 16.00, "entrée"),
+("Oeuf mollet à la truffe noire", "Oeuf mollet posé sur une tranche de pain grillé, garni d'une truffe noire râpée et parsemé de persil.", 17.00, "entrée"),
+("Tartare de saumon mariné", "Le tartare de saumon est un mélange de saumon cru coupé en petits dés, mariné avec de l'huile d'olive, du jus de citron, de l'aneth et des échalotes.", 15.00, "entrée"),
+("Soupe à l'oignon gratinée", "Cette soupe est faite à partir de oignons émincés, cuits dans du beurre et de la crème, puis gratins avec du fromage râpé.", 12.00, "entrée"),
+("Salade de homard à la provençale", "Cette salade comporte des morceaux de homard cuits, servis sur une lit de salade verte avec des tomates cerises, des poivrons rouges et jaunes et des oignons rouges. Le tout est assaisonné avec de l'huile d'olive et du vinaigre balsamique.", 17.00, "entrée"),
+("Coq au vin", "Le coq au vin est un plat traditionnel français consistant en un poulet cuit lentement dans du vin rouge, du bouillon, des oignons, des carottes et des champignons.", 30.00, "plat"),
+("Canard à l'orange", "Canard rôti, servi avec une sauce à base d'orange et de miel. Les ingrédients comprennent un canard, des oranges, du miel, de l'ail, de la marjolaine et du vin blanc.", 32.00, "plat"),
+("Filet de boeuf Rossini", "Filet de boeuf cuit à la perfection, servi sur une tranche de pain grillé avec une truffe noire râpée et une sauce Madeira.", 36.00, "plat"),('Poulet fermier aux champignons', 'Poulet fermier cuit avec des champignons, des échalotes, du vin blanc et du bouillon.', 32.00, 'plat'),
+('Agneau à la royale', 'L''agneau à la royale est un agneau cuit lentement dans une sauce au vin rouge, avec des carottes, des oignons, des champignons et des épices.', 35.00, 'plat'),
+('Crème brûlée', 'Dessert à base de crème anglaise avec une croûte de sucre caramelisé.', 10.00, 'dessert'),
+('Profiteroles au chocolat', 'Boules de pâte à choux fourrées avec une crème chantilly et servies avec une sauce au chocolat.', 11.00, 'dessert'),
+('Assortiment de macarons', 'Biscuits à base de sucre, d''amande et de blancs d''oeufs, fourrés avec de differentes saveurs.', 12.00, 'dessert'),
+('Opera gâteau', 'Gâteau composé de plusieurs couches de génoise, de crème au beurre et de chocolat fondu.', 11.00, 'dessert'),
+('Café gourmand', 'Expresso accompagné de petites versions de nos autres desserts, idéal pour gouter à tout.', 10.00, 'dessert'),
+('Bouillabaisse', 'poissons de roche et fruits de mer dans un bouillon parfumé aux aromates et au fenouil. Servie avec des pommes de terre fondantes, des croûtons à l\'ail croustillants et une délicieuse rouille maison', 36.00, 'plat'),
+('Château La Nerthe', 'Côtes du Rhône - 2018 (rouge 70cl) - prix au verre : 16€', 70.00, 'vin'),
+('Château La Rame', 'Bordeaux - 2019 (rouge 70cl) - prix au verre : 11€', 40.00, 'vin'),
+('Les Vignerons d\'Estézargues', 'Côtes du Rhône - 2021 (rouge 70cl) - prix au verre : 8€', 15.00, 'vin'),
+('Château Carbonnieux', 'Pessac-Léognan, Bordeaux - 2020 (blanc 70cl) - prix au verre : 16€', 70.00, 'vin'),
+('Domaine Laroche', 'Chablis, Bourgogne - 2019 (blanc 70cl) - prix au verre : 11€', 40.00, 'vin'),
+('La Grille d\'Or', 'Pouilly-Fumé, Loire - 2022 (blanc 70cl) - prix au verre : 8€', 15.00, 'vin'),
+('Menu entrée', 'Une entrée, un plat et un verre de vin au choix', 60.00, 'menu'),
+('Menu dessert', 'Un plat, un dessert et un verre de vin au choix', 60.00, 'menu'),
+('Menu complet', 'Une entrée, un plat, un dessert et un verre de vin au choix', 70.00, 'menu');
