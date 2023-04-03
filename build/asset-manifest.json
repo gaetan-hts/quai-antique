@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/quai-antique/static/css/main.f2da2a45.css",
+    "main.css": "/quai-antique/static/css/main.9f5017e9.css",
     "main.js": "/quai-antique/static/js/main.e64e3663.js",
     "static/media/Allura-Regular.ttf": "/quai-antique/static/media/Allura-Regular.b4abf6da4e58441442ee.ttf",
     "static/media/bg-slider-01.jpg": "/quai-antique/static/media/bg-slider-01.fe69c12f74029e51f817.jpg",
@@ -14,11 +14,11 @@
     "static/media/avatar-sommelier.jpg": "/quai-antique/static/media/avatar-sommelier.709d9dcc6816292ca822.jpg",
     "static/media/event-01.jpg": "/quai-antique/static/media/event-01.3f17095263a5a9fc6970.jpg",
     "index.html": "/quai-antique/index.html",
-    "main.f2da2a45.css.map": "/quai-antique/static/css/main.f2da2a45.css.map",
+    "main.9f5017e9.css.map": "/quai-antique/static/css/main.9f5017e9.css.map",
     "main.e64e3663.js.map": "/quai-antique/static/js/main.e64e3663.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2da2a45.css",
+    "static/css/main.9f5017e9.css",
     "static/js/main.e64e3663.js"
   ]
 }
