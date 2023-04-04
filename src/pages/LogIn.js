@@ -74,7 +74,7 @@ const LogIn = () => {
     email: formData.email,
     password: formData.password
   }
-  await axios.post('https://api-rest-quai-antique.herokuapp.com/logIn.php', data)
+  await axios.post('https://api-rest-quai-antique.herokuapp.com/login.php', data)
   .then((res) => {
     if (res.data.failLogin) {
       alert("Email ou mot de passe incorecte.") 
