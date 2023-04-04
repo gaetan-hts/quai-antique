@@ -125,6 +125,26 @@ const handleSubmit = (e) => {
   }
 };
 
+// Create a date object for today at noon
+const start = new Date();
+start.setHours(12, 0, 0, 0);
+// Create a date object for today at midnight
+const end = new Date();
+end.setHours(23, 59, 59, 999);
+// Create a list of timestamps for times between 12pm-2pm and 7pm-9pm with 15-minute intervals
+const timestamps = [];
+let current = start;
+  while (current <= end) {
+    const hour = current.getHours();
+    const minute = current.getMinutes();
+    if ((hour >= 12 && hour < 14) || (hour >= 19 && hour < 21)) {
+      if (minute % 15 === 0) {
+        timestamps.push(current.getTime());
+      }
+    }
+current.setTime(current.getTime() + 15 * 60 * 1000);
+};
+
 // Handle submit of the admin panel form (change the max people)
   const handleMaxPeopleSubmit = (e) => {
     e.preventDefault();
@@ -195,7 +215,7 @@ const handleSubmit = (e) => {
               dateFormat='dd/MM/yyyy - HH:mm'
               placeholderText='Date de réservation'
               minDate={new Date()}
-              includeTimes={[1675846800000, 1675847700000, 1675848600000, 1675849500000, 1675850400000, 1675851300000, 1675852200000, 1675853100000, 1675854000000, 1675872000000, 1675872000000, 1675872900000, 1675873800000, 1675874700000, 1675875600000, 1675876500000, 1675877400000, 1675878300000, 1675879200000]}
+              includeTimes={timestamps}
               filterDate={date => !excludedDates.includes(date.getDay())}
               excludeDates={fullDays}
               required
