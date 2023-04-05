@@ -5,6 +5,7 @@ import icPlate from "../assets/img/ic-plate.png";
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import { fr } from "date-fns/locale";
+import { parseISO } from 'date-fns';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Tooltip from '../components/Tooltip';
@@ -16,6 +17,7 @@ const Book = ({ content, children }) => {
   const [fullDays, setFullDays] = useState([]); // Dates that are fully booked
   const [dbData, setDbData] = useState([]); // Data retrieved from backend
   const [userData, setUserData] = useState([]); // User data from database (if logged in)
+  const [submitCount, setSubmitCount] = useState(0); // trigger callback of useEffect after a submit
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -26,28 +28,32 @@ const Book = ({ content, children }) => {
   }) // Form data for booking, using object destructuring and set initial state for all form fields
   
 // Fetch data from backend on component mount
-  useEffect(() => {
-    axios
-    .get("https://api-rest-quai-antique.herokuapp.com/index.php")
-    .then(res => {
-      const dateToExclude = [];
-      res.data.calendar.forEach(date => {
-        if (date.lunchPeople > date.maxPeople && date.dinnerPeople > date.maxPeople) {
-          dateToExclude.push(new Date(date.date));
-        }
-      });
-      const closedDays = [];
-      res.data.schedules.forEach(schedule => {
-        if (schedule.lunchTime === "fermé") {
-          closedDays.push(schedule.id);
-        }
-      });
-      setDbData(res.data);
-      setFullDays(dateToExclude);
-      setExcludedDates(closedDays); 
-    })
-    .catch(err => console.error(err));
-  }, []);
+useEffect(() => {
+  axios
+  .get("https://api-rest-quai-antique.herokuapp.com/index.php")
+  .then(res => {
+    const dateToExclude = [];
+    const closedDays = [];
+
+    res.data.calendar.forEach(date => {
+      if (date.lunchPeople >= date.maxpeople && date.dinnerPeople >= date.maxpeople) {
+        const formattedDate = date.date.split("/").reverse().join("-");
+        dateToExclude.push(parseISO(formattedDate));
+      }
+    });
+
+    res.data.schedules.forEach(schedule => {
+      if (schedule.lunchTime === "fermé" && schedule.dinnerTime === "fermé") {
+        closedDays.push(schedule.id);
+      }
+    });
+
+    setDbData(res.data);
+    setExcludedDates(closedDays);
+    setFullDays(dateToExclude);
+  })
+  .catch(err => console.error(err));
+}, [submitCount]);
   
 // Retrieve user data from cookies and database
   useEffect(() => {
@@ -101,28 +107,39 @@ const handleSubmit = (e) => {
       alert("Veuillez sélectionner une heure de réservation valide. Les heures de réservation disponibles sont entre 12:00 et 14:00 et entre 19:00 et 21:00.");
     } else {
       axios.post('https://api-rest-quai-antique.herokuapp.com/checkBooking.php', data)
-        .then((res) => console.log(res))
-        .catch(err => console.error(err));
-
-      axios.post('https://api-rest-quai-antique.herokuapp.com/bookingList.php', data)
-        .then((r) => {
-          if (r.data.booked === true) {
-            alert("Merci, votre réservation a bien été prise en compte.")
-            setFormData({
-              name: "",
-              surname: "",
-              email: "",
-              people: "",
-              allergies: "",
-              selectedDate: ""
-            })
+        .then((res) => {
+          if (res.data.booked === true) {
+            axios.post('https://api-rest-quai-antique.herokuapp.com/bookingList.php', data)
+              .then((r) => {
+                if (r.data.booked === true) {
+                  alert("Merci, votre réservation a bien été prise en compte.")
+                  setFormData({
+                    name: "",
+                    surname: "",
+                    email: "",
+                    people: "",
+                    allergies: "",
+                    selectedDate: ""
+                  })
+                } else {
+                  alert("Un problème est survenu, votre réservation n'a pas été prise en compte.")
+                }
+              })
+              .catch(err => console.error(err));
+          } else if (res.data.lunchPeople === false && res.data.dinnerPeople === false) {
+            alert("Désolé, nous sommes complets midi et soir ce jour-là.");
+          } else if (res.data.lunchPeople === false) {
+            alert("Désolé, il ne reste que des places pour le service du soir.");
+          } else if (res.data.dinnerPeople === false) {
+            alert("Désolé, il ne reste que des places pour le service du midi.");
           } else {
-            alert("Un problème est survenu, votre réservation n'a pas été prise en compte.")
+            alert("Un problème est survenu lors de votre réservation, merci de réessayer plus tard ou de nous contacter directement par téléphone.");
           }
         })
         .catch(err => console.error(err));
     }
-  }
+  } 
+  setSubmitCount(submitCount + 1);
 };
 
 // Create a date object for today at noon
