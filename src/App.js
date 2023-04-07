@@ -17,8 +17,8 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/galerie" element={<Gallery />} />
           <Route path="/reserver" element={<Book />} />
-          <Route path="/se-connecter" element={<LogIn/>} />
-          <Route path="/profil" element={<User/>} />
+          <Route path="/se-connecter" element={<LogIn />} />
+          <Route path="/profil" element={<User />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
     </HashRouter>
