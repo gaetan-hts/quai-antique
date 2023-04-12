@@ -185,9 +185,6 @@ current.setTime(current.getTime() + 15 * 60 * 1000);
         <label htmlFor="max-people">Nombre maximum de couverts : </label>
         <div className='tooltip-container'>
         <input type="number" placeholder='Nouveau nombre max de couverts' value={newMaxPeople} onChange={e => setNewMaxPeople(e.target.value)} />
-          <Tooltip content="Le nombre maximal de couverts correspond au seuil à partir duquel toute nouvelle réservation est empêchée et la date dans l'input date/time est désactivée. Par exemple, si une réservation de 8 personnes est effectuée alors qu'il y a déjà 45 personnes sur les 50 couverts max, la réservation sera tout de même prise en compte.">
-            <span><i className="fa fa-info-circle"></i></span>
-          </Tooltip>
         </div>
         <button onClick={handleMaxPeopleSubmit}>Modifier</button>
       </form>
