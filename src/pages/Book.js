@@ -121,8 +121,6 @@ const handleSubmit = (e) => {
                     allergies: "",
                     selectedDate: ""
                   })
-                } else {
-                  alert("Un problème est survenu, votre réservation n'a pas été prise en compte.")
                 }
               })
               .catch(err => console.error(err));
